@@ -5,6 +5,7 @@ local function enable_transparency()
     vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 end
 
+-- This is the tokyonight theme for neovim
 return {
     -- {
     --     "folke/tokyonight.nvim",
