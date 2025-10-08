@@ -1,29 +1,65 @@
--- This is the vscode theme for neovim with the tokyonight theme commented
-local function enable_transparency()
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-end
+-- lua/plugins/colors.lua
 
--- This is the tokyonight theme for neovim
+-- List of theme plugins
 return {
-         {
-             "folke/tokyonight.nvim",
-             config = function()
-                 vim.cmd.colorscheme "tokyonight"
-                 vim.cmd('hi Directory guibg=NONE')
-                 vim.cmd('hi SignColumn guibg=NONE')
-                 enable_transparency()
-             end
-         },
-   -- {
-    --   "Mofiqul/vscode.nvim",
-    --    name = 'vscode',
-    --    config = function()
-    --        vim.cmd.colorscheme "vscode"
-    --        vim.cmd('hi Directory guibg=NONE')
-    --        vim.cmd('hi SignColumn guibg=NONE')
-    --        enable_transparency()
-    --    end
-   -- }
+    -- Tokyonight
+    {
+        "folke/tokyonight.nvim",
+        name = "tokyonight",
+        lazy = false,
+    },
+
+    -- Night Owl
+    {
+        "oxfist/night-owl.nvim",
+        name = "night-owl",
+        lazy = false,
+    },
+
+    -- Tundra
+    {
+        "sam4llis/nvim-tundra",
+        name = "tundra",
+        lazy = false,
+        config = function()
+            require("nvim-tundra").setup({
+                transparent_background = true,
+                editor = { search = {}, substitute = {} },
+                syntax = {
+                    booleans = { bold = true, italic = true },
+                    comments = { italic = true },
+                },
+            })
+        end,
+    },
+
+    -- Moonfly
+    {
+        "bluz71/vim-moonfly-colors",
+        name = "moonfly",
+        lazy = false,
+    },
+
+    -- VSCode Dark+
+    {
+        "Mofiqul/vscode.nvim",
+        name = "vscode",
+        lazy = false,
+        config = function()
+            vim.g.vscode_style = "dark"
+        end,
+    },
+
+    -- One Dark
+    {
+        "navarasu/onedark.nvim",
+        name = "onedark",
+        lazy = false,
+        config = function()
+            require("onedark").setup({
+                style = "dark",
+                transparent = true,
+            })
+        end,
+    },
 }
