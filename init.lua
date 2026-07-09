@@ -16,13 +16,17 @@ vim.opt.cpoptions:append("n") -- Ensures 'showbreak' doesn't mess up line number
 -- THE NOTE-TAKING SECRET SAUCE:
 -- This hides symbols like #, *, and [ ] so they can be replaced by icons.
 -- 0 = show all, 2 = hide symbols and show rendered version.
-vim.opt.conceallevel = 2 
+vim.opt.conceallevel = 3 
 
 -- Set space as leader only for normal mode
 vim.g.mapleader = " "
 
 -- Ensure your mappings specify "n" for normal mode
 vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', { desc = 'Find Files' })
+
+-- ==========================================================================
+-- LAZY.NVIM (The Plugin manager)
+-- ==========================================================================
 
 -- Bootstrap Lazy.nvim (The Plugin Manager)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -42,6 +46,10 @@ vim.cmd[[colorscheme tokyonight-night]]
 
 -- Optional: Quick shortcut to toggle 'Rendered' view on/off
 vim.keymap.set('n', '<leader>rn', '<cmd>RenderMarkdown toggle<cr>', { desc = 'Toggle Render' })
+
+-- ==========================================================================
+-- TELESCOPE.NVIM (The buffer search engine)
+-- ==========================================================================
 
 local builtin = require('telescope.builtin')
 
@@ -64,9 +72,17 @@ vim.g.netrw_browse_split = 0   -- Open files in the same window
 vim.g.netrw_winsize = 25       -- Set width to 25% of screen
 vim.g.netrw_altv = 1           -- Open splits to the right
 
+-- ==========================================================================
+-- THE FILE EXPLORER
+-- ==========================================================================
+
 -- THE SHORTCUT: Leader + c + d
 -- This opens Netrw in "Lexplore" (Left Explore) mode, which acts like a drawer
 vim.keymap.set('n', '<leader>cd', '<cmd>Lexplore<cr>', { desc = 'Toggle File Menu' })
+
+-- ==========================================================================
+-- HARPOON (The multi-file workflow tool)
+-- ==========================================================================
 
 -- keymaps for harpoon.nvim
 local harpoon = require("harpoon")
@@ -86,6 +102,10 @@ vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end, { desc
 vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end, { desc = "Harpoon File 2" })
 vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end, { desc = "Harpoon File 3" })
 vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end, { desc = "Harpoon File 4" })
+
+-- ==========================================================================
+-- WHICH_KEY.NVIM (The List of different key functions in neovim)
+-- ==========================================================================
 
 -- shortcuts for which-key.nvim
 local wk = require("which-key")
